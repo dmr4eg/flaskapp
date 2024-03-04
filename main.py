@@ -3,9 +3,12 @@ from flask import Flask, render_template  # Importing the Flask module from the 
 app = Flask(__name__)  # Creating an instance of the Flask class  
  
 @app.route('/')  # View function for endpoint '/'
-def helloBase():  
-    # return "<h1>Hello, NSI!</h1>"  
-    return render_template("index.html")
+def basePage():  
+    return render_template("base.html")
+
+@app.route('/r')  # View function for endpoint '/'
+def registerPage():  
+    return render_template("register.html")
 
 
 # Starting a web application at 0.0.0.0.0:5000 with debug mode enabled  
