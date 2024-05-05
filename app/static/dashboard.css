@@ -1,0 +1,59 @@
+/*== Importing some fonts from googles official fonts list ===*/
+@import url("https://fonts.googleapis.com/css2?family=Raleway:wght@200&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,700;1,700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Wire+One&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Flamenco&display=swap");
+
+/*=== Resetting all the default settings ===*/
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Raleway", sans-serif;
+    scroll-behavior: smooth;
+}
+
+/*=== Settings for body ===*/
+body {
+    background: rgb(190, 189, 189, 0.5);
+    overflow-x: hidden;
+}
+
+a {
+    text-decoration: none;
+    color: #222222;
+    font-family: "Raleway", sans-serif;
+}
+
+/*=== Section with form and its settings in it ===*/
+section {
+    top: 26%;
+    border-radius: 25px;
+    right: 20%;
+    position: absolute;
+    width: 60%;
+    height: 43vh;
+    /* display: flex; */
+    /* justify-content: center; */
+    /* align-items: center; */
+    /* background: rgba(37, 37, 37, 0.79); */
+    z-index: 10;
+}
+
+/*=== Text on the bottom part of the form ===*/
+.account {
+    text-align: center;
+    margin: 0;
+    padding: 0;
+}
+#acc {
+    z-index: 111;
+    position: absolute;
+    top: 63vh;
+    left: 68vw;
+    font-size: 1vw;
+    font-style: italic;
+    color: #6e6e6e8f;
+    font-family: "Raleway", sans-serif;
+}

@@ -1,4 +1,4 @@
-#!/Users/dmr4eg/Folders/Codes/CTU/4sem/nsi/projects/nsi/venv/bin/python3.11
+#!/Users/dmr4eg/Folders/Codes/CTU/4sem/nsi/nsi/venv/bin/python3
 # -*- coding: utf-8 -*-
 import re
 import sys

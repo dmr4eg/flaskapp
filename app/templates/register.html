@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+{% block title %}Index{% endblock %}
+{% block head %}
+    {{ super() }}
+    <link rel="stylesheet" href="static/register.css" />
+{% endblock %}
+{% block content %}
+    <section>
+        <form method="post" class="regform" autocomplete="off" action="/register">
+            <ul>
+                <li>
+                    <label for="username">Username*</label>
+                    <input type="text" name="username" maxlength="100" id="name"
+                            pattern="[A-Za-z0-9]{5,}" required>
+                    <span>Create your username</span>
+                </li>
+                <li>
+                    <label for="email">Email*</label>
+                    <input type="email" name="email" id="email" maxlength="100"
+                        pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
+                        required>
+                    <span>Enter a valid email address</span>
+                </li>
+                <li>
+                    <label for="dob">Date of Birth</label>
+                    <input type="date" name="dob" id="dob">
+                    <span>Enter your date of birth</span>
+                </li>
+                <li>
+                    <label for="password">Password*</label>
+                    <input type="password" id="password" name="password" maxlength="100" pattern=".{8,}" required
+                        autocomplete="off">
+                    <span>Create your password</span>
+                </li>
+                <li>
+                    <label for="password_confirm">Password check</label>
+                    <input type="password" id="password_confirm" name="password_confirm" maxlength="100" pattern=".{8,}"
+                        required autocomplete="off">
+                    <span>Re-enter your password</span>
+                </li>
+                <li>
+                    <!-- <input type="hidden" name="csrf_token"> -->
+                    <button type="submit" class="btn btn-primary">Register</button>
+                </li>
+            </ul>
+        </form>
+    </section>
+{% endblock %}
+{% block footer %}
+&copy; Copyright 2024 by @assyldam.
+{% endblock %}

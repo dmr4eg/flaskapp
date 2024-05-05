@@ -1,0 +1,192 @@
+/*== Importing some fonts from googles official fonts list ===*/
+@import url("https://fonts.googleapis.com/css2?family=Raleway:wght@200&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,700;1,700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Wire+One&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Flamenco&display=swap");
+
+/*=== Resetting all the default settings ===*/
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Raleway", sans-serif;
+    scroll-behavior: smooth;
+}
+
+/*=== Settings for body ===*/
+body {
+    background: rgb(190, 189, 189, 0.5);
+    overflow-x: hidden;
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+    -khtml-user-select: none; /* Konqueror HTML */
+    -moz-user-select: none; /* Old versions of Firefox */
+    -ms-user-select: none; /* Internet Explorer/Edge */
+    user-select: none;
+}
+
+a {
+    text-decoration: none;
+    color: #222222;
+    font-family: "Raleway", sans-serif;
+}
+
+/*=== Section with form and its settings in it ===*/
+section {
+    top: 26%;
+    border-radius: 25px;
+    right: 35%;
+    position: absolute;
+    width: 30%;
+    height: 43vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: rgba(37, 37, 37, 0.79);
+    z-index: 10;
+}
+.regform {
+    width: 95%;
+    height: 94.5%;
+    margin: 10px auto;
+    background: #fff;
+    border-radius: 2px;
+    padding: 3vw;
+    font-family: "Raleway", sans-serif;
+    border-radius: 20px;
+}
+.regform ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+.regform li {
+    position: relative;
+    display: block;
+    padding: 0.9vh;
+    border: 1px solid #dddddd;
+    margin-bottom: 30px;
+    border-radius: 10px;
+}
+.regform li:last-child {
+    border: none;
+    /* margin-bottom: 0px; */
+    text-align: center;
+}
+.regform li > label {
+    display: block;
+    float: left;
+    margin-top: -5.5%;
+    background: #ffffff;
+    height: 3vh;
+    color: #616161;
+    font-size: 1vw;
+    overflow: hidden;
+    font-family: "Raleway", sans-serif;
+}
+.regform input[type="text"],
+.regform input[type="date"],
+.regform input[type="datetime"],
+.regform input[type="email"],
+.regform input[type="number"],
+.regform input[type="search"],
+.regform input[type="time"],
+.regform input[type="url"],
+.regform input[type="password"],
+.regform input[type="passcheck"],
+.regform textarea,
+.regform select {
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    width: 100%;
+    display: block;
+    outline: none;
+    border: none;
+    height: 2.5vh;
+    line-height: 2.5vh;
+    font-size: 1.2vw;
+    padding: 0;
+    font-family: "Raleway", sans-serif;
+}
+.regform li > span {
+    background: rgba(37, 37, 37, 0.79);
+    display: block;
+    padding: 3px;
+    margin: 0 -8px -8px -8px;
+    text-align: center;
+    color: #ffffff;
+    font-family: "Raleway", sans-serif;
+    font-size: 0.8vw;
+    border-radius: 8px;
+}
+.regform input[type="submit"],
+.regform input[type="button"] {
+    background: #efc91a;
+    border: none;
+    padding: 1vh 1.2vw 1vh 1.2vw;
+    border-bottom: 3px solid #222222;
+    border-radius: 12px;
+    color: #000000;
+    font-size: 1.1vw;
+}
+.regform input[type="submit"]:hover,
+.regform input[type="button"]:hover {
+    background: #f5dd75;
+    color: #fff;
+}
+
+/*=== Return to the homepage button ===*/
+#return {
+    position: absolute;
+    top: 75%;
+    left:38%;
+    color: #ffffff;
+    font-size: 2vw;
+    font-weight: 100;
+    z-index: 105;
+    font-family: "Nunito Sans", sans-serif;
+    overflow: hidden;
+    white-space: nowrap;
+    padding: 6px 15px;
+    color: rgb(0, 0, 0);
+    border-radius: 20px;
+    background: rgba(255, 255, 255, 0.943);
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+    transition: 0.3s;
+    z-index: 100;
+}
+#return:hover {
+    background: rgba(255, 255, 255, 0.5);
+}
+#return:active {
+    background: rgba(255, 255, 255, 0.5);
+}
+#return:visited {
+    background: rgba(255, 255, 255, 0.5);
+}
+#return:link {
+    background: rgba(255, 255, 255, 0.5);
+}
+#return:link,
+#return:visited {
+    text-decoration: none;
+}
+
+/*=== Text on the bottom part of the form ===*/
+.account {
+    text-align: center;
+    margin: 0;
+    padding: 0;
+}
+#acc {
+    z-index: 111;
+    position: absolute;
+    top: 63vh;
+    left: 68vw;
+    font-size: 1vw;
+    font-style: italic;
+    color: #6e6e6e8f;
+    font-family: "Raleway", sans-serif;
+}

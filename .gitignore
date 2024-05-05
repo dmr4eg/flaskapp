@@ -1,0 +1,28 @@
+# Ignore compiled files
+*.o             # Object files
+*.out           # Executable files
+
+# Ignore temporary files
+*~              # Editor backup files
+
+# Ignore build directories
+build/          # Build artifacts
+
+# Ignore log files
+*.log           # Log files
+
+# Ignore macOS system files
+.DS_Store       # Finder metadata files
+
+# Ignore IDE specific files
+.idea/          # JetBrains IDE settings
+.vscode/        # Visual Studio Code settings
+
+# Ignore node_modules directory
+node_modules/   # Node.js dependencies
+
+# Ignore compiled Python files
+__pycache__/    # Python bytecode cache
+
+# Negation: Include specific config file
+!important.txt  # Include important.txt even though it matches other patterns
