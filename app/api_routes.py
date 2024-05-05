@@ -1,41 +1,36 @@
 from flask import Blueprint, request, jsonify
 from datetime import datetime
+from .data_manager import TemperatureDataManager
 
 api = Blueprint('api', __name__)
-
-temperature_data = [
-    {"timestamp": "2024-03-01 12:00:00", "temp": 20},
-    {"timestamp": "2024-03-02 12:00:00", "temp": 22},
-    {"timestamp": "2024-03-03 12:00:00", "temp": 18},
-    {"timestamp": "2024-03-04 12:00:00", "temp": 21},
-    {"timestamp": "2024-03-05 12:00:00", "temp": 19},
-]
+data_manager = TemperatureDataManager()
 
 @api.route('/api/temperature', methods=['POST'])
 def insert_temperature():
     data = request.get_json()
     if not data or 'temp' not in data:
         return jsonify({"error": "Missing 'temp' value"}), 400
-    timestamp = datetime.now().isoformat()
-    temperature_data.append({"timestamp": timestamp, "temp": data['temp']})
-    return jsonify({"timestamp": timestamp, "temp": data['temp']}), 201
+    new_record = data_manager.add_record(data['temp'])
+    return jsonify(new_record), 201
 
 @api.route('/api/temperature/last', methods=['GET'])
 def get_last_temperature():
-    if temperature_data:
-        return jsonify(temperature_data[-1])
+    last_record = data_manager.get_last_record()
+    if last_record:
+        return jsonify(last_record)
     else:
         return jsonify({"error": "No data available"}), 404
 
 @api.route('/api/temperature/last/<int:count>', methods=['GET'])
 def get_last_temperatures(count):
-    if count <= 0:
-        return jsonify({"error": "Parameter count must be a positive integer"}), 400
-    return jsonify(temperature_data[-count:])
+    records = data_manager.get_last_records(count)
+    if records:
+        return jsonify(records)
+    return jsonify({"error": "Invalid count value or no data"}), 400
 
 @api.route('/api/temperature/delete/<int:count>', methods=['DELETE'])
 def delete_temperatures(count):
-    if count <= 0 or count > len(temperature_data):
-        return jsonify({"error": "Invalid count value"}), 400
-    del temperature_data[:count]
-    return jsonify({"status": "Deleted", "count": count}), 200
+    deleted_count = data_manager.delete_records(count)
+    if deleted_count:
+        return jsonify({"status": "Deleted", "count": deleted_count}), 200
+    return jsonify({"error": "Invalid count value"}), 400

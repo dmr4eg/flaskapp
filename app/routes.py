@@ -1,18 +1,9 @@
 from flask import Flask, render_template, request, redirect, url_for, session
 from app import app
+from .data_manager import TemperatureDataManager
 
 app.secret_key = 'mysecretkey'
- 
-temperature_data = [
-    {"timestamp": "2024-03-01 12:00:00", "temp": 20},
-    {"timestamp": "2024-03-02 12:00:00", "temp": 22},
-    {"timestamp": "2024-03-03 12:00:00", "temp": 18},
-    {"timestamp": "2024-03-04 12:00:00", "temp": 21},
-    {"timestamp": "2024-03-05 12:00:00", "temp": 19},
-]
-last_data = temperature_data[-1]
-last_temp = last_data['temp']
-last_timestamp = last_data['timestamp']
+data_manager = TemperatureDataManager()
 
 @app.route('/')  # View function for endpoint '/'
 def basePage():  
@@ -43,14 +34,18 @@ def loginPage():
 
 @app.route('/dashboard')
 def dashboardPage():
+    last_record = data_manager.get_last_record()
+    last_temp = last_record['temp'] if last_record else None
+    last_timestamp = last_record['timestamp'] if last_record else None
     username = session.get('username', 'Guest')  # Default to 'Guest' if not found in session
-    return render_template("dashboard.html", username=username, last_temp=last_temp, last_timestamp=last_timestamp, temperature_data=temperature_data)
+    temperature_data = data_manager.get_data()  # Make sure this retrieves the latest data
+    return render_template("dashboard.html", username=username, temperature_data=temperature_data, last_temp=last_temp, last_timestamp=last_timestamp)
 
 @app.route('/delete', methods=['POST'])
 def deleteRecords():
-    num_to_delete = int(request.form['numToDelete'])
-    del temperature_data[:num_to_delete]
-    return render_template("dashboard.html", last_temp=last_temp, last_timestamp=last_timestamp, temperature_data=temperature_data)
+    count = int(request.form['numToDelete'])
+    deleted_count = data_manager.delete_records(count)
+    return redirect(url_for('dashboardPage'))
 
 @app.route('/logout')
 def logout():
