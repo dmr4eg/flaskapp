@@ -1,5 +1,7 @@
-from flask import Flask, render_template, request, jsonify  # Importing the Flask module from the flask package  
+from flask import Flask, render_template, request, redirect, url_for, session
 from app import app
+
+app.secret_key = 'mysecretkey'
  
 temperature_data = [
     {"timestamp": "2024-03-01 12:00:00", "temp": 20},
@@ -25,48 +27,25 @@ def registerPage():
         dob = request.form['dob']
         password = request.form['password']
         password_confirm = request.form['password_confirm']
-        # Zde byste měli uložit uživatelské údaje do databáze
-        return redirect(url_for('loginPage'))
+        # Save user details and if successful:
+        session['username'] = username
+        return redirect(url_for('dashboardPage'))
     return render_template('register.html')
 
-    # if request.method == 'POST':
-    #     # Handle form submission here
-    #     name = request.form['name']
-
-    #     # Serialize the form data to JSON
-    #     user_data = {
-    #         'name': name,
-    #         'email': email,
-    #         'dob': dob,
-    #         'password': password,
-    #         'password_confirm': password_confirm
-    #     }
-
-    #     if not name or not email or not password:
-    #         return "All fields are required", 400
-
-    #     if password != password_confirm:
-    #         return "Passwords do not match", 400
-
-    #     # Assuming the registration is successful, you can redirect or render a success message
-    #     return "Registration successful"
-    #     # return jsonify(user_data)  # Return JSON response
-        
-    return render_template("register.html")
-
-@app.route('/login', methods=['GET', 'POST'])  # View function for endpoint '/login'
-def loginPage():  
+@app.route('/login', methods=['GET', 'POST'])
+def loginPage():
     if request.method == 'POST':
         username = request.form['username']
         password = request.form['password']
-        # Zde byste měli ověřit přihlašovací údaje a nastavit session
+        # Validate credentials and if valid:
+        session['username'] = username
         return redirect(url_for('dashboardPage'))
     return render_template("login.html")
 
 @app.route('/dashboard')
-def dashboardPage():   
-    username = "User" 
-    return render_template("dashboard.html", last_temp=last_temp, last_timestamp=last_timestamp, temperature_data=temperature_data, username=username)
+def dashboardPage():
+    username = session.get('username', 'Guest')  # Default to 'Guest' if not found in session
+    return render_template("dashboard.html", username=username, last_temp=last_temp, last_timestamp=last_timestamp, temperature_data=temperature_data)
 
 @app.route('/delete', methods=['POST'])
 def deleteRecords():
@@ -74,5 +53,8 @@ def deleteRecords():
     del temperature_data[:num_to_delete]
     return render_template("dashboard.html", last_temp=last_temp, last_timestamp=last_timestamp, temperature_data=temperature_data)
 
+@app.route('/logout')
+def logout():
+    session.clear()  # This will remove all items in the session
+    return redirect(url_for('loginPage'))
 
-# Starting a web application at 0.0.0.0.0:5000 with debug mode enabled  

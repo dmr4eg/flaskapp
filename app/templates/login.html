@@ -6,11 +6,11 @@
 {% endblock %}
 {% block content %}
 <section>
-    <form class="regform" action='/login'>
+    <form class="regform" action='/login' method="post">
         <ul>
             <li>
                 <label for="username">Username</label>
-                <input type="text" name="name" id="username" maxlength="100">
+                <input type="text" name="username" id="username" maxlength="100">
                 <span>Enter your username here</span>
             </li>
             <li>
