@@ -14,7 +14,6 @@ last_data = temperature_data[-1]
 last_temp = last_data['temp']
 last_timestamp = last_data['timestamp']
 
-
 @app.route('/')  # View function for endpoint '/'
 def basePage():  
     return render_template("base.html")
@@ -57,4 +56,3 @@ def deleteRecords():
 def logout():
     session.clear()  # This will remove all items in the session
     return redirect(url_for('loginPage'))
-
