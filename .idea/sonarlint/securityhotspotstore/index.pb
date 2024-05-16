@@ -21,3 +21,7 @@ K
 app/templates/register.html,8/2/8271b8723a0435c43160a565f02704ca4b22486e
 G
 app/templates/base.html,b/6/b6171f99674bbc82b0b41d343bbc7523b74521ac
+=
+app/models.py,e/9/e919f1e867cfa561970ba9549250f4d5bb90bcf6
+@
+requirements.txt,1/9/19359a61ae2446b51b549167b014da2fcf265768

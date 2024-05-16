@@ -1,17 +1,17 @@
 from flask import Flask
 from flask_bootstrap import Bootstrap
-from .api_routes import api
 from flask_sqlalchemy import SQLAlchemy
+from flask_migrate import Migrate
 
 app = Flask(__name__)
 Bootstrap(app)
-app.register_blueprint(api)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///nsiapp.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
-
 db = SQLAlchemy(app)
+migrate = Migrate(app, db)
 
-from app import routes
+from app import routes  # Import routes after db initialization
+from app.api_routes import api
 
-from flask_sqlalchemy import SQLAlchemy
+app.register_blueprint(api)

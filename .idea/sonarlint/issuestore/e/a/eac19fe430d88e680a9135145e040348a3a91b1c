@@ -1,12 +1,9 @@
 
-rpython:S1542	"NRename function "basePage" to match the regular expression ^[a-z_][a-z0-9_]*$.(á©»Òûÿÿÿÿ8Æé¸ƒø1
-vpython:S1542"RRename function "registerPage" to match the regular expression ^[a-z_][a-z0-9_]*$.(™°ñüÿÿÿÿ8Æé¸ƒø1
-Fpython:S1481"'Remove the unused local variable "dob".(Œ®ß¡8Çé¸ƒø1
-Ppython:S1481",Remove the unused local variable "password".(‘”µ±úÿÿÿÿ8Çé¸ƒø1
-Xpython:S1481"4Remove the unused local variable "password_confirm".(»Ÿµœúÿÿÿÿ8Çé¸ƒø1
-Mpython:S1481")Remove the unused local variable "email".(îİøÃÿÿÿÿÿ8Çé¸ƒø1
-npython:S1542"ORename function "loginPage" to match the regular expression ^[a-z_][a-z0-9_]*$.(Öî–Î8Çé¸ƒø1
-Ppython:S1481",Remove the unused local variable "password".(‘”µ±úÿÿÿÿ8Çé¸ƒø1
-wpython:S1542$"SRename function "dashboardPage" to match the regular expression ^[a-z_][a-z0-9_]*$.(­¡ş¸üÿÿÿÿ8Çé¸ƒø1
-wpython:S1542-"SRename function "deleteRecords" to match the regular expression ^[a-z_][a-z0-9_]*$.(¿ÃÖûùÿÿÿÿ8Çé¸ƒø1
-Upython:S1481/"1Remove the unused local variable "deleted_count".(•µ»Êıÿÿÿÿ8Çé¸ƒø1
+˜python:S1542
+"NRename function "basePage" to match the regular expression ^[a-z_][a-z0-9_]*$.(á©»Òûÿÿÿÿ8Ëæ•†ø1J$6ed23c80-c2f0-4461-8ce2-0e709ea27ece
+œpython:S1542"RRename function "registerPage" to match the regular expression ^[a-z_][a-z0-9_]*$.(™°ñüÿÿÿÿ8Ìæ•†ø1J$f927523c-b828-415a-97f7-7d0a0ee10ce3
+lpython:S1481"'Remove the unused local variable "dob".(Œ®ß¡8Íæ•†ø1J$990b514a-7de7-49af-812b-bf1ca8d52396
+”python:S1542$"ORename function "loginPage" to match the regular expression ^[a-z_][a-z0-9_]*$.(Öî–Î8Îæ•†ø1J$c4e24040-a3a6-478a-955c-e16e0b1284ad
+python:S15421"SRename function "dashboardPage" to match the regular expression ^[a-z_][a-z0-9_]*$.(­¡ş¸üÿÿÿÿ8Îæ•†ø1J$77916074-8a75-488a-91fb-ac3b299a97f1
+python:S1542:"SRename function "deleteRecords" to match the regular expression ^[a-z_][a-z0-9_]*$.(¿ÃÖûùÿÿÿÿ8Îæ•†ø1J$f6b844a3-554f-47f2-b437-045918a6c2ed
+{python:S1481<"1Remove the unused local variable "deleted_count".(•µ»Êıÿÿÿÿ8Îæ•†ø1J$e42ab8cb-bfde-4957-a1ec-e2d95607e33d

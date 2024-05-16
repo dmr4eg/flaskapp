@@ -1,12 +1,13 @@
-from flask import Flask, render_template, request, redirect, url_for, session
-from app import app
+from flask import render_template, request, redirect, url_for, session
+from app import app, db
 from .data_manager import TemperatureDataManager
+from .models import Users
+from werkzeug.security import check_password_hash
 
-app.secret_key = 'mysecretkey'
 data_manager = TemperatureDataManager()
 
-@app.route('/')  # View function for endpoint '/'
-def basePage():  
+@app.route('/')
+def basePage():
     return render_template("base.html")
 
 @app.route('/register', methods=['GET', 'POST'])
@@ -17,7 +18,16 @@ def registerPage():
         dob = request.form['dob']
         password = request.form['password']
         password_confirm = request.form['password_confirm']
-        # Save user details and if successful:
+
+        if password != password_confirm:
+            return "Passwords do not match", 400
+
+        user = Users(username=username, email=email)
+        user.set_password(password)
+
+        db.session.add(user)
+        db.session.commit()
+
         session['username'] = username
         return redirect(url_for('dashboardPage'))
     return render_template('register.html')
@@ -27,9 +37,12 @@ def loginPage():
     if request.method == 'POST':
         username = request.form['username']
         password = request.form['password']
-        # Validate credentials and if valid:
-        session['username'] = username
-        return redirect(url_for('dashboardPage'))
+
+        user = Users.query.filter_by(username=username).first()
+        if user and user.check_password(password):
+            session['username'] = username
+            return redirect(url_for('dashboardPage'))
+        return "Invalid username or password", 400
     return render_template("login.html")
 
 @app.route('/dashboard')
