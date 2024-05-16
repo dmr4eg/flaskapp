@@ -5,6 +5,7 @@ from flask_migrate import Migrate
 
 app = Flask(__name__)
 Bootstrap(app)
+app.secret_key = 'SECRET KEY'
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///nsiapp.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 

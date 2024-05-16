@@ -56,9 +56,21 @@ def dashboardPage():
 
 @app.route('/delete', methods=['POST'])
 def deleteRecords():
-    count = int(request.form['numToDelete'])
-    deleted_count = data_manager.delete_records(count)
-    return redirect(url_for('dashboardPage'))
+    try:
+        num_to_delete = request.form.get('numToDelete', 0)
+        if not num_to_delete:
+            return "No number provided for deletion.", 400
+
+        count = int(num_to_delete)
+        if count <= 0:
+            return "Number of records to delete must be positive.", 400
+
+        manager = TemperatureDataManager()
+        deleted_count = manager.delete_records(count)
+
+        return redirect(url_for('dashboardPage'))
+    except ValueError:
+        return "Invalid input. Please enter a valid number.", 400
 
 @app.route('/logout')
 def logout():
